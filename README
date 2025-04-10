@@ -1,0 +1,27 @@
+This code implements a stacked-ensemble Intrusion Detection System on the NSL-KDD dataset. It combines two base models – an XGBoost classifier and a PyTorch MLP – and feeds their outputs into a logistic regression meta-classifier.
+
+Here’s how it works in brief:
+
+Data Loading & Preprocessing:
+
+The code reads NSL-KDD train/test CSV files, applies one-hot encoding to categorical features, and scales numerical features.
+
+Base Models:
+
+An XGBoost classifier is trained on the processed dataset.
+
+A PyTorch MLP is also trained on the same data, logging training progress.
+
+Stacking:
+
+Both models produce predicted probabilities for each sample.
+
+A logistic regression model is then trained on these probabilities to learn the final decision.
+
+Evaluation:
+
+The final stacked ensemble is evaluated against the test data.
+
+Metrics (accuracy, precision, recall, F1-score) and a confusion matrix show how well the IDS distinguishes normal vs. attack traffic.
+
+It’s a straightforward demonstration of ensemble learning in a security context, aiming to balance false alarms and missed attacks by leveraging complementary strengths of tree-based methods and neural networks.
